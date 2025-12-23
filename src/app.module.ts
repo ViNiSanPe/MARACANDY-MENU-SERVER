@@ -5,7 +5,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { AppConfig } from "./config/app.config";
 import { DatabaseConfig } from "./config/db.config";
 
-import { ProductModule } from './product/product.module';
+import { ProductModule } from "./core/product/product.module";
 
 @Module({
   imports: [
@@ -21,8 +21,7 @@ import { ProductModule } from './product/product.module';
       }),
     }),
 
-    BillingModule,
-    BeneficiaryModule,
+    ProductModule,
   ],
 })
 export class AppModule {}
