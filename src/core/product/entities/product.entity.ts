@@ -18,7 +18,7 @@ export class Product {
   public description?: string;
 
   @Prop({ type: [String], default: [] })
-  public ingredients: string[];
+  public ingredients?: string[];
 
   @Prop({ required: true, min: 0 })
   public price: number;

@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Product, ProductDocument } from "./entities/product.entity";
-import { FindProductDto } from "./dto/find-product.dto";
 
 @Injectable()
 export class ProductService {
@@ -11,13 +10,7 @@ export class ProductService {
     private readonly productModel: Model<ProductDocument>,
   ) {}
 
-  public async findAll(query: FindProductDto): Promise<Product[]> {
-    const filter: Partial<Product> = {};
-
-    if (query.category) {
-      filter.category = query.category;
-    }
-
-    return this.productModel.find(filter).lean<Product[]>();
+  public async findAll(): Promise<Product[]> {
+    return this.productModel.find().lean<Product[]>().exec();
   }
 }
